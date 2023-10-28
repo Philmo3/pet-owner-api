@@ -7,8 +7,8 @@ services:
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_DB=test
-    container_name: postgres
+      - POSTGRES_DB=pet-owner
+    container_name: postgres-pet
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     ports:
@@ -18,7 +18,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: nest-js-container
+    container_name: pet-app
     environment:
       - PORT=${PORT}
     ports:
@@ -31,7 +31,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     restart: always
-    container_name: nest-pgadmin4
+    container_name: nest-pgadmin4-pet
     environment:
       - PGADMIN_DEFAULT_EMAIL=admin@admin.com
       - PGADMIN_DEFAULT_PASSWORD=pgadmin4
